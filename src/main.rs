@@ -6,11 +6,11 @@ use std::env;
 fn main() {
     let mut args = env::args().peekable();
     let program_name = args.next().unwrap();
-    if env::args().count() == 1 {
+    if args.peek().is_some() {
         println!("Usage: {program_name} <file1> <file2>...");
     }
 
-    for file in std::env::args().skip(1) {
+    for file in args {
         if let Ok(bytes) = fs::read(&file) {
             let ent = shannon(&bytes);
             println!("{ent:.2} - {file} - {:.2}", Size(bytes.len() as u64));
