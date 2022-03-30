@@ -1,0 +1,8 @@
+[package]
+name = "entropy_calc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+entropy = "0.4.1"
+size-display = "0.1.4"
