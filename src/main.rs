@@ -11,9 +11,14 @@ fn main() {
     }
 
     for file in args {
-        if let Ok(bytes) = fs::read(&file) {
-            let ent = shannon(&bytes);
-            println!("{ent:.2} - {file} - {:.2}", Size(bytes.len() as u64));
+        match fs::read(&file) {
+            Ok(bytes) => {
+                let ent = shannon(&bytes);
+                println!("{ent:.2} - {file} - {:.2}", Size(bytes.len() as u64));
+            },
+            Err(e) => {
+                eprintln!("[*] Failed to read {file} - {e:?}")
+            }
         }
     }
 }
