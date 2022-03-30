@@ -6,7 +6,7 @@ use std::env;
 fn main() {
     let mut args = env::args().peekable();
     let program_name = args.next().unwrap();
-    if args.peek().is_some() {
+    if args.peek().is_none() {
         println!("Usage: {program_name} <file1> <file2>...");
     }
 
